@@ -10,7 +10,7 @@ ETL pipeline สำหรับดึงข้อมูลสภาพอาก�
 - Next: Deploy ไปบน GCP
 
 ## Structure
-```plaintext```
+```plaintext
 weather_pipeline/
 ├── airflow/                       🔹 Config และ DAGs
 │   ├── dags/
@@ -27,11 +27,13 @@ weather_pipeline/
 ├── docker-compose.yml             ✅ รัน PostgreSQL + Airflow
 ├── README.md
 ├── requirements.txt
+```
 
 ## Getting Started
-```bash```
+```bash
 docker-compose up -d
 python scripts/load.py
 
 docker-compose down -v  # ลบ container + volume (ต้องใช้ -v)
 docker-compose up -d    # รันใหม่ จะสร้าง schema ให้อัตโนมัติ
+```
