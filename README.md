@@ -24,6 +24,7 @@ weather_pipeline/
 │   └── load.py
 ├── README.md
 
+![alt text](image.png)
 
 ## Getting Started
 ```bash
