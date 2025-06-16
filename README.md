@@ -10,7 +10,7 @@ ETL pipeline สำหรับดึงข้อมูลสภาพอาก�
 - Next: Deploy ไปบน GCP
 
 ## Structure
-```plaintext
+```plaintext```
 weather_pipeline/
 ├── airflow/                       🔹 Config และ DAGs
 │   ├── dags/
@@ -29,7 +29,7 @@ weather_pipeline/
 ├── requirements.txt
 
 ## Getting Started
-```bash
+```bash```
 docker-compose up -d
 python scripts/load.py
 
