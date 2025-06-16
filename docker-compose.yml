@@ -1,5 +1,36 @@
 version: '3.8'
 
+x-airflow-common:
+  &airflow-common
+  image: apache/airflow:2.8.1-python3.9
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?options=-csearch_path=airflow
+    # AIRFLOW__CORE__FERNET_KEY: 'MRuQ34QHneET8XIT18mHaFuIPBP-frLBikKV6q-h8Gg='
+    # AIRFLOW__WEBSERVER__SECRET_KEY: '93b119e2d262b7e929b3ed301d43ddcb134f6db79a9dbd5e21f8cda7306217c3'
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY}
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAG_FOLDER: /opt/airflow/dags
+
+    POSTGRES_HOST: ${AIRFLOW_POSTGRES_HOST}
+    POSTGRES_PORT: ${AIRFLOW_POSTGRES_PORT}
+    POSTGRES_USER: ${AIRFLOW_POSTGRES_USER}
+    POSTGRES_PASSWORD: ${AIRFLOW_POSTGRES_PASSWORD}
+    POSTGRES_DB: ${AIRFLOW_POSTGRES_DB}
+    POSTGRES_SCHEMA: ${AIRFLOW_POSTGRES_SCHEMA}
+
+    WEATHER_API_KEY: ${WEATHER_API_KEY}
+    CITY: ${CITY}
+    WEATHER_API_URL: ${WEATHER_API_URL}
+
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./scripts:/opt/airflow/scripts
+  depends_on:
+    - postgres
+
 services:
   postgres:
     image: postgres:14
@@ -14,6 +45,17 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./sql/init_schema.sql:/docker-entrypoint-initdb.d/init_schema.sql
     restart: always
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow-webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow-scheduler
+    command: scheduler
 
 volumes:
   pgdata:
