@@ -1,6 +1,7 @@
 # Weather Pipeline 🌦️
 
-ETL pipeline สำหรับดึงข้อมูลสภาพอากาศจาก Weatherstack API และโหลดเข้า PostgreSQL ด้วย Docker + Python + Airflow.
+ETL pipeline สำหรับดึงข้อมูลสภาพอากาศจาก Weatherstack API
+และโหลดเข้า PostgreSQL ด้วย Docker + Python + Airflow + GCP Cloud SQL PostgreSQL.
 
 ## Features
 - Extract → Transform → Load (ETL)
