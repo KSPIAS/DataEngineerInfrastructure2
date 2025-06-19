@@ -35,10 +35,11 @@ def load(data):
             VALUES (%s, %s, %s, %s, %s)
         """, (data["city"], data["country"], data["temperature"], data["humidity"], data["timestamp"]))
         conn.commit()
+        conn.close()
 
-if __name__ == "__main__":
-    ensure_schema_and_table()
-    raw_data = extract_weather()
-    clean_data = transform(raw_data)
-    load(clean_data)
-    conn.close()
+# if __name__ == "__main__":
+#     ensure_schema_and_table()
+#     raw_data = extract_weather()
+#     clean_data = transform(raw_data)
+#     load(clean_data)
+#     conn.close()

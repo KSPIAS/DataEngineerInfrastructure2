@@ -17,6 +17,6 @@ def extract_weather():
     response.raise_for_status()
     return response.json()
 
-if __name__ == "__main__":
-    data = extract_weather()
-    print(data)
+# if __name__ == "__main__":
+#     data = extract_weather()
+#     print(data)

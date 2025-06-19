@@ -1,14 +1,15 @@
 # Weather Pipeline 🌦️
 
 ETL pipeline สำหรับดึงข้อมูลสภาพอากาศจาก Weatherstack API
-และโหลดเข้า PostgreSQL ด้วย Docker + Python + Airflow + GCP Cloud SQL PostgreSQL.
+และโหลดเข้า PostgreSQL ด้วย Docker + Python + Airflow + GCP Cloud SQL PostgreSQL + Terraform.
 
 ## Features
 - Extract → Transform → Load (ETL)
 - ใช้ `.env` สำหรับความปลอดภัย
 - รัน PostgreSQL ผ่าน Docker
 - Schedule Airflow
-- Next: Deploy ไปบน GCP
+- Deploy ไปบน GCP
+- Use Terraform
 
 ## Structure
 ```plaintext
@@ -16,6 +17,12 @@ weather_pipeline/
 ├── airflow/                       🔹 Config และ DAGs
 │   ├── dags/
 │   │   └── weather_dag.py         ✅ DAG schedule ETL
+infra/
+│   ├── creds.json
+│   ├── main.tf
+│   ├── providers.tf
+│   ├── terraform.tfvars
+│   ├── variables.tf
 ├── scripts/
 │   ├── extract.py
 │   ├── transform.py

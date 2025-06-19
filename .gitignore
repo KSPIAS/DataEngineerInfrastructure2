@@ -14,3 +14,9 @@ venv/
 
 # Docker
 *.log
+
+# Ignore GCP credentials
+infra/*.json
+
+# terraform variables with secrets
+terraform.tfvars
