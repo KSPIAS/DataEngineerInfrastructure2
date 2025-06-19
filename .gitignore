@@ -20,3 +20,8 @@ infra/*.json
 
 # terraform variables with secrets
 terraform.tfvars
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+creds.json
