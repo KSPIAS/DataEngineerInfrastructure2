@@ -45,5 +45,6 @@ python scripts/load.py
 docker-compose down -v  # ลบ container + volume (ต้องใช้ -v)
 docker-compose up -d    # รันใหม่ จะสร้าง schema ให้อัตโนมัติ
 
-http://localhost:8080
+http://localhost:8080 #Airflow
+http://localhost:3000 #Grafana
 ```

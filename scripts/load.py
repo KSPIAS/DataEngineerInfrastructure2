@@ -3,6 +3,9 @@ import psycopg2
 from dotenv import load_dotenv
 from extract import extract_weather
 from transform import transform
+import logging
+logger = logging.getLogger("weather_pipeline")
+logger.setLevel(logging.INFO)
 
 load_dotenv()
 
@@ -36,6 +39,13 @@ def load(data):
         """, (data["city"], data["country"], data["temperature"], data["humidity"], data["timestamp"]))
         conn.commit()
         conn.close()
+
+        logging.basicConfig(
+            format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+            level=logging.INFO
+        )
+
+        logger.info("โหลดข้อมูลจาก Weather API สำเร็จ")
 
 # if __name__ == "__main__":
 #     ensure_schema_and_table()

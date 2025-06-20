@@ -1,6 +1,9 @@
 import os
 import requests
 from dotenv import load_dotenv
+import logging
+logger = logging.getLogger("weather_pipeline")
+logger.setLevel(logging.INFO)
 
 load_dotenv()
 
@@ -15,6 +18,14 @@ def extract_weather():
     }
     response = requests.get(API_URL, params=params)
     response.raise_for_status()
+
+    logging.basicConfig(
+        format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+        level=logging.INFO
+    )
+
+    logger.info("เริ่มโหลดข้อมูลจาก Weather API")
+
     return response.json()
 
 # if __name__ == "__main__":
