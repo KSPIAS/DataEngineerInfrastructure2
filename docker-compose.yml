@@ -24,9 +24,14 @@ x-airflow-common:
     CITY: ${CITY}
     WEATHER_API_URL: ${WEATHER_API_URL}
 
+    #Telegram Bot
+    TG_BOT_TOKEN: ${TG_BOT_TOKEN}
+    TG_CHAT_ID: ${TG_CHAT_ID}
+
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./scripts:/opt/airflow/scripts
+    - ./utils:/opt/airflow/utils
   depends_on:
     - postgres
 
@@ -67,6 +72,7 @@ services:
       - grafana-storage:/var/lib/grafana
     depends_on:
       - postgres
+    restart: always
 
 volumes:
   pgdata:
