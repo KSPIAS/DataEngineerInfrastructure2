@@ -34,6 +34,29 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Create .env file from GitHub Secrets
+      run: |
+        echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" >> .env
+        echo "WEATHER_API_URL=${{ secrets.WEATHER_API_URL }}" >> .env
+        echo "CITY=${{ secrets.CITY }}" >> .env
+        echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> .env
+        echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> .env
+        echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+        echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+        echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
+        echo "POSTGRES_SCHEMA=${{ secrets.POSTGRES_SCHEMA }}" >> .env
+        echo "AIRFLOW_POSTGRES_HOST=${{ secrets.AIRFLOW_POSTGRES_HOST }}" >> .env
+        echo "AIRFLOW_POSTGRES_PORT=${{ secrets.AIRFLOW_POSTGRES_PORT }}" >> .env
+        echo "AIRFLOW_POSTGRES_USER=${{ secrets.AIRFLOW_POSTGRES_USER }}" >> .env
+        echo "AIRFLOW_POSTGRES_PASSWORD=${{ secrets.AIRFLOW_POSTGRES_PASSWORD }}" >> .env
+        echo "AIRFLOW_POSTGRES_DB=${{ secrets.AIRFLOW_POSTGRES_DB }}" >> .env
+        echo "AIRFLOW_POSTGRES_SCHEMA=${{ secrets.AIRFLOW_POSTGRES_SCHEMA }}" >> .envแ
+        echo "AIRFLOW_POSTGRES_SCHEMA_CONFIG=${{ secrets.AIRFLOW_POSTGRES_SCHEMA_CONFIG }}" >> .env
+        echo "AIRFLOW__CORE__FERNET_KEY=${{ secrets.AIRFLOW__CORE__FERNET_KEY }}" >> .env
+        echo "AIRFLOW__WEBSERVER__SECRET_KEY=${{ secrets.AIRFLOW__WEBSERVER__SECRET_KEY }}" >> .env
+        echo "TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}" >> .env
+        echo "TG_CHAT_ID=${{ secrets.TG_CHAT_ID }}" >> .env
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
