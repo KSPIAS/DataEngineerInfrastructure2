@@ -10,6 +10,7 @@ ETL pipeline สำหรับดึงข้อมูลสภาพอาก�
 - Schedule Airflow
 - Deploy ไปบน GCP
 - Use Terraform
+- กำลังศึกษาการทำ CI/CD + E2E + GitHub Actions
 
 ## Structure
 ```plaintext
