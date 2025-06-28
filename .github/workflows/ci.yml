@@ -57,6 +57,9 @@ jobs:
         echo "TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}" >> .env
         echo "TG_CHAT_ID=${{ secrets.TG_CHAT_ID }}" >> .env
 
+    - name: Show public IP of GitHub Actions runner
+      run: curl -s https://api.ipify.org
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
