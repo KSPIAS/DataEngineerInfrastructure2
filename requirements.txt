@@ -1,6 +1,7 @@
 python-dotenv
 requests
 psycopg2-binary
+pytest
 
 # Airflow core package
 apache-airflow==2.8.1
