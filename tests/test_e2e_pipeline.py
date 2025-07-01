@@ -17,7 +17,7 @@ def test_pipeline_inserted_data():
         user=POSTGRES_USER,
         password=POSTGRES_PASSWORD,
         # host=POSTGRES_HOST,
-        host=127.0.0.1 #Git Actions
+        host="127.0.0.1" #Git Actions
         port=POSTGRES_PORT
     )
     cur = conn.cursor()
