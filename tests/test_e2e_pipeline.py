@@ -10,7 +10,7 @@ POSTGRES_USER= os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD= os.getenv("POSTGRES_PASSWORD")
 POSTGRES_DB= os.getenv("POSTGRES_DB")
 POSTGRES_SCHEMA= os.getenv("POSTGRES_SCHEMA")
-print(POSTGRES_SCHEMA)
+
 def test_pipeline_inserted_data():
     conn = psycopg2.connect(
         dbname=POSTGRES_DB,
