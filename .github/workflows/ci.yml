@@ -86,11 +86,13 @@ jobs:
         curl -o cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
         chmod +x cloud_sql_proxy
 
+    - name: Write GCP credentials to file
+      run: |
+        echo "${{ secrets.GCP_CREDENTIALS }}" > credentials.json
+
     - name: Start Cloud SQL Proxy
       run: |
         ./cloud_sql_proxy -instances=gcp-cloud-sql-postgresql:asia-southeast1:my-postgres-db=tcp:5432 &
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Run E2E tests
       run: pytest tests/test_e2e_pipeline.py
