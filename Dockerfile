@@ -9,7 +9,7 @@ ENV AIRFLOW__CORE__EXECUTOR=$AIRFLOW__CORE__EXECUTOR
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY dags/ /opt/airflow/dags/
+COPY airflow/dags/ /opt/airflow/dags/
 COPY scripts/ /opt/airflow/scripts/
 
 ENV AIRFLOW_HOME=/opt/airflow
