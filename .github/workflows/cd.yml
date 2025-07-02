@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    needs: test1  # เชื่อมกับ CI (ต้องมี job ชื่อ test ใน ci.yml)
+    needs: test # เชื่อมกับ CI (ต้องมี job ชื่อ test ใน ci.yml)
     runs-on: ubuntu-latest
 
     steps:
