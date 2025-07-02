@@ -119,6 +119,9 @@ jobs:
 
     - name: Build and Push Docker image
       run: |
-        IMAGE_NAME=ghcr.io/$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]'):latest
-        docker build -t $IMAGE_NAME .
-        docker push $IMAGE_NAME
+       IMAGE_NAME=ghcr.io/$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]'):latest
+       docker build \
+         --build-arg AIRFLOW_CONN_DB=${{ secrets.AIRFLOW_CONN_DB }} \
+         --build-arg AIRFLOW__CORE__EXECUTOR=${{ secrets.AIRFLOW__CORE__EXECUTOR }} \
+         -t $IMAGE_NAME .
+       docker push $IMAGE_NAME
